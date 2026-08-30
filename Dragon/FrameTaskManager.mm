@@ -1758,7 +1758,6 @@ void DrawDataThread()
 
             if (UWorld* World = UWorld::GetWorld())
             {
-                World = nullptr;
                 const TArray<ULevel*>& Levels = World->Levels;
                 for (int32 Idx = 1; Idx < Levels.Num(); ++Idx)
                 {
@@ -4405,7 +4404,6 @@ void new_TickActor(AShooterPlayerController* _this, float DeltaTime, int32 TickT
         {
             if (UEngine* GEngine = UEngine::GetEngine())
             {
-                GEngine = nullptr;
                 UPrimalGlobals* Singleton = (UPrimalGlobals*)GEngine->GameSingleton;
                 if (Singleton)
                 {
