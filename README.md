@@ -5,6 +5,8 @@ Advanced **iOS** mod for **Ark: Survival Evolved Mobile (Unsupported)**
 
 Made by [OPSphystech420](https://github.com/OPSphystech420) , [ZarakiDev](https://github.com/ZarakiDev) Aug 2025 (c)
 
+For more info join our [Discord Community](https://discord.gg/FnSncuYVgB)
+
 ## Disclaimer
 
 The source code of this project is published on GitHub solely for educational and research purposes.
