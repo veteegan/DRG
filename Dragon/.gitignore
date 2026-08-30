@@ -1,0 +1,13 @@
+
+.DS_Store
+.theos/
+.vscode/
+packages/
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+.idea/
+*.user
+.env
+.env.*
+!.env.example

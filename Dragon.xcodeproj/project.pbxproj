@@ -1,0 +1,691 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7ACE2C8428155461001CC0F9 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACE2C8228155461001CC0F9 /* MetalKit.framework */; };
+		7ACE2C8528155461001CC0F9 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACE2C8328155461001CC0F9 /* Metal.framework */; };
+		7ACE2C8A28155479001CC0F9 /* libc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACE2C8828155479001CC0F9 /* libc.tbd */; };
+		7ACE2C8B28155479001CC0F9 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACE2C8628155479001CC0F9 /* libc++.tbd */; };
+		7ACE2C8C28155480001CC0F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACE2C8928155479001CC0F9 /* Foundation.framework */; };
+		7ACE2C8D28155480001CC0F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACE2C8728155479001CC0F9 /* UIKit.framework */; };
+		ED14EAE52D900B2D008B4F85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED14EAE42D900B2D008B4F85 /* CoreGraphics.framework */; };
+		ED14EAE72D900B86008B4F85 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED14EAE62D900B86008B4F85 /* ImageIO.framework */; };
+		ED3866A22E647569003D4366 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3866A12E647568003D4366 /* ModelIO.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ED3DD98E2E34F4C000FB27D7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7ACE2C0D28154406001CC0F9 /* Sishen.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Sishen.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ACE2C8228155461001CC0F9 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		7ACE2C8328155461001CC0F9 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		7ACE2C8628155479001CC0F9 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7ACE2C8728155479001CC0F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7ACE2C8828155479001CC0F9 /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
+		7ACE2C8928155479001CC0F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ED14EAE42D900B2D008B4F85 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ED14EAE62D900B86008B4F85 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		ED3866A12E647568003D4366 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
+		EDF8C49E2DAD59D100E0F37A /* DeviceCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceCheck.framework; path = System/Library/Frameworks/DeviceCheck.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		ED94EA352E3F98B000BA981A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ImGui/backends/imgui_impl_metal.mm,
+				Source/CppSDK/SDK/AdBuffStatusWidget_functions.cpp,
+				Source/CppSDK/SDK/AIModule_functions.cpp,
+				Source/CppSDK/SDK/AllowWandering_functions.cpp,
+				Source/CppSDK/SDK/AndroidPermission_functions.cpp,
+				Source/CppSDK/SDK/AnimePromo_functions.cpp,
+				Source/CppSDK/SDK/AnimGraphRuntime_functions.cpp,
+				Source/CppSDK/SDK/AnimNotify_PlayCameraShake_functions.cpp,
+				Source/CppSDK/SDK/Ark_SkySphere_RGBM_functions.cpp,
+				Source/CppSDK/SDK/ArtifactCrate_Instantaneous_Alt_functions.cpp,
+				Source/CppSDK/SDK/AssetRegistry_functions.cpp,
+				Source/CppSDK/SDK/Attack_SRV_functions.cpp,
+				Source/CppSDK/SDK/Attacking_dR_functions.cpp,
+				Source/CppSDK/SDK/AttackMove_DR_functions.cpp,
+				Source/CppSDK/SDK/AttackSetRunning_functions.cpp,
+				Source/CppSDK/SDK/AttackTarget_SRV_functions.cpp,
+				Source/CppSDK/SDK/AttackTargetMove_DR_functions.cpp,
+				Source/CppSDK/SDK/AudioMixer_functions.cpp,
+				Source/CppSDK/SDK/BaseFuelBurner_GasOnly_functions.cpp,
+				Source/CppSDK/SDK/BaseHumanAnimBP_functions.cpp,
+				Source/CppSDK/SDK/BasePrimalPursuit_functions.cpp,
+				Source/CppSDK/SDK/BedBaseBP_functions.cpp,
+				Source/CppSDK/SDK/BeginFly_TK_functions.cpp,
+				Source/CppSDK/SDK/BeginLand_TK_functions.cpp,
+				Source/CppSDK/SDK/BossArena_functions.cpp,
+				Source/CppSDK/SDK/BP_IslandWaterPlane_functions.cpp,
+				Source/CppSDK/SDK/BreakAccountLink_functions.cpp,
+				Source/CppSDK/SDK/Buff_Base_Disease_Low_functions.cpp,
+				Source/CppSDK/SDK/Buff_NoBuild_functions.cpp,
+				Source/CppSDK/SDK/Buff_Premium_ThickSkin_functions.cpp,
+				Source/CppSDK/SDK/Buff_SwampFever_functions.cpp,
+				Source/CppSDK/SDK/Buff_TekGroupArmor_functions.cpp,
+				Source/CppSDK/SDK/Buff_XPLystro_functions.cpp,
+				Source/CppSDK/SDK/BuffsEntry_functions.cpp,
+				Source/CppSDK/SDK/CableComponent_functions.cpp,
+				Source/CppSDK/SDK/Campfire_functions.cpp,
+				Source/CppSDK/SDK/CampFireEmitter_functions.cpp,
+				Source/CppSDK/SDK/CheckIsVectorNonZero_functions.cpp,
+				Source/CppSDK/SDK/Chest_AnimBP_Base_functions.cpp,
+				Source/CppSDK/SDK/CinematicCamera_functions.cpp,
+				Source/CppSDK/SDK/ClearRunning_functions.cpp,
+				Source/CppSDK/SDK/ClickCatcher_functions.cpp,
+				Source/CppSDK/SDK/Cnidaria_Character_BP_functions.cpp,
+				Source/CppSDK/SDK/Coel_Character_BP_functions.cpp,
+				Source/CppSDK/SDK/Compass_FPV_RIG_AnimBlueprint_functions.cpp,
+				Source/CppSDK/SDK/ConfirmationAmberPurchase_functions.cpp,
+				Source/CppSDK/SDK/ConfirmationDialogGeneric_functions.cpp,
+				Source/CppSDK/SDK/ConfirmationDialogStoreItem_functions.cpp,
+				Source/CppSDK/SDK/ContolOptionsConfirmation_functions.cpp,
+				Source/CppSDK/SDK/CraftingRequirementsEntry_functions.cpp,
+				Source/CppSDK/SDK/CustomMeshComponent_functions.cpp,
+				Source/CppSDK/SDK/DailyPursuit_functions.cpp,
+				Source/CppSDK/SDK/DataListEntryWidgetPrimalItem_QuickItem_functions.cpp,
+				Source/CppSDK/SDK/DataListEntryWidgetPrimalItem_QuickWheelItem_functions.cpp,
+				Source/CppSDK/SDK/DataListEntryWidgetPrimalPremiumItem_functions.cpp,
+				Source/CppSDK/SDK/DayCycleManagerBase_functions.cpp,
+				Source/CppSDK/SDK/Dilo_Character_BP_functions.cpp,
+				Source/CppSDK/SDK/Dino_AIController_BP_functions.cpp,
+				Source/CppSDK/SDK/Dino_Character_BP_functions.cpp,
+				Source/CppSDK/SDK/DinoAttackStateRanged_Leading_functions.cpp,
+				Source/CppSDK/SDK/DinoBlueprintBase_RootBoneName_functions.cpp,
+				Source/CppSDK/SDK/DinoBlueprintBase_RootTransform_functions.cpp,
+				Source/CppSDK/SDK/DinoListEntry_functions.cpp,
+				Source/CppSDK/SDK/DinoOptionsMenu_functions.cpp,
+				Source/CppSDK/SDK/DinoShouldFly_SRV_functions.cpp,
+				Source/CppSDK/SDK/DinoShouldLand_SRV_functions.cpp,
+				Source/CppSDK/SDK/DinoTamedInventoryComponent_BP_Base_functions.cpp,
+				Source/CppSDK/SDK/DmgType_Melee_DmgMetal_RaidDino_functions.cpp,
+				Source/CppSDK/SDK/Dodo_Character_BP_functions.cpp,
+				Source/CppSDK/SDK/Door_Base_SM_functions.cpp,
+				Source/CppSDK/SDK/DroppedItemGenericLowQuality_functions.cpp,
+				Source/CppSDK/SDK/Dropper_Base_functions.cpp,
+				Source/CppSDK/SDK/DungeonExplore_functions.cpp,
+				Source/CppSDK/SDK/DungeonStatusWidget_functions.cpp,
+				Source/CppSDK/SDK/ElectricStun_Impacts_functions.cpp,
+				Source/CppSDK/SDK/EmoteButton_functions.cpp,
+				Source/CppSDK/SDK/EmoteMenu_functions.cpp,
+				Source/CppSDK/SDK/EndLanding_TK_functions.cpp,
+				Source/CppSDK/SDK/EngramDataListWidget_functions.cpp,
+				Source/CppSDK/SDK/EngramLevelEntry_functions.cpp,
+				Source/CppSDK/SDK/EquipmentEntry_functions.cpp,
+				Source/CppSDK/SDK/EquipmentSelection_functions.cpp,
+				Source/CppSDK/SDK/ExplorerChest_Base_functions.cpp,
+				Source/CppSDK/SDK/ExplorerChest_DinoDossiers_functions.cpp,
+				Source/CppSDK/SDK/ExplorerChest_Leddica_functions.cpp,
+				Source/CppSDK/SDK/ExplorerChest_Li_functions.cpp,
+				Source/CppSDK/SDK/ExplorerChest_Rockwell_functions.cpp,
+				Source/CppSDK/SDK/ForceSuccess_TK_functions.cpp,
+				Source/CppSDK/SDK/Forebears_functions.cpp,
+				Source/CppSDK/SDK/FPVWeaponAnimBP_Base_Carrying_functions.cpp,
+				Source/CppSDK/SDK/GameCheatButton_functions.cpp,
+				Source/CppSDK/SDK/GameCheatButtonBase_functions.cpp,
+				Source/CppSDK/SDK/GameCheatItemButton_functions.cpp,
+				Source/CppSDK/SDK/GameCheatToggleButton_functions.cpp,
+				Source/CppSDK/SDK/GameCheatUI_functions.cpp,
+				Source/CppSDK/SDK/GameplayTags_functions.cpp,
+				Source/CppSDK/SDK/GameplayTasks_functions.cpp,
+				Source/CppSDK/SDK/GenericActionButton_functions.cpp,
+				Source/CppSDK/SDK/GenericCheckbox_functions.cpp,
+				Source/CppSDK/SDK/GenericOptionsMenu_functions.cpp,
+				Source/CppSDK/SDK/GenericOptionWidget_functions.cpp,
+				Source/CppSDK/SDK/GenericToggleButton_functions.cpp,
+				Source/CppSDK/SDK/GeometryCache_functions.cpp,
+				Source/CppSDK/SDK/GetAccountLinkToken_functions.cpp,
+				Source/CppSDK/SDK/GetRandomFleePoint_TK_functions.cpp,
+				Source/CppSDK/SDK/HeadMountedDisplay_functions.cpp,
+				Source/CppSDK/SDK/ImageSharing_functions.cpp,
+				Source/CppSDK/SDK/InGameOptionsMenu_functions.cpp,
+				Source/CppSDK/SDK/InGameStore_functions.cpp,
+				Source/CppSDK/SDK/InventoryMenu_Designer_functions.cpp,
+				Source/CppSDK/SDK/InventoryMenu_functions.cpp,
+				Source/CppSDK/SDK/IsBaby_BT_functions.cpp,
+				Source/CppSDK/SDK/IsFlying_DK_functions.cpp,
+				Source/CppSDK/SDK/IsFlyingBool_functions.cpp,
+				Source/CppSDK/SDK/IsFollowing_DK_functions.cpp,
+				Source/CppSDK/SDK/IsInvalidNavigationPoint_TK_functions.cpp,
+				Source/CppSDK/SDK/IsNotFollowing_DK_functions.cpp,
+				Source/CppSDK/SDK/IsNotPlayerMoveCommand_DK_functions.cpp,
+				Source/CppSDK/SDK/IsTamed_functions.cpp,
+				Source/CppSDK/SDK/IsWithinAttackRangeAndGetBestAttack_SRV_functions.cpp,
+				Source/CppSDK/SDK/Landscape_functions.cpp,
+				Source/CppSDK/SDK/LevelSequence_functions.cpp,
+				Source/CppSDK/SDK/LevelUpEntry_functions.cpp,
+				Source/CppSDK/SDK/LevelUpPanel_functions.cpp,
+				Source/CppSDK/SDK/LoadingScreenUI_functions.cpp,
+				Source/CppSDK/SDK/LocationServicesBPLibrary_functions.cpp,
+				Source/CppSDK/SDK/Lystro_Character_BP_functions.cpp,
+				Source/CppSDK/SDK/M_Obelisks_functions.cpp,
+				Source/CppSDK/SDK/M_TheIsland_functions.cpp,
+				Source/CppSDK/SDK/MapJumpEntry_functions.cpp,
+				Source/CppSDK/SDK/MapJumpUI_functions.cpp,
+				Source/CppSDK/SDK/MatineeValueInterpolationContainer_functions.cpp,
+				Source/CppSDK/SDK/MediaAssets_functions.cpp,
+				Source/CppSDK/SDK/MeleeFist_Impacts_functions.cpp,
+				Source/CppSDK/SDK/MobilePatchingUtils_functions.cpp,
+				Source/CppSDK/SDK/MortarAndPestle_functions.cpp,
+				Source/CppSDK/SDK/Moschops_Character_BP_functions.cpp,
+				Source/CppSDK/SDK/MoveAroundBlockade_DR_functions.cpp,
+				Source/CppSDK/SDK/MovieScene_functions.cpp,
+				Source/CppSDK/SDK/MovieSceneCapture_functions.cpp,
+				Source/CppSDK/SDK/MRMesh_functions.cpp,
+				Source/CppSDK/SDK/MultiTapActionMappings_functions.cpp,
+				Source/CppSDK/SDK/NewStatusWidget_functions.cpp,
+				Source/CppSDK/SDK/Niagara_functions.cpp,
+				Source/CppSDK/SDK/NotWithinDistance_functions.cpp,
+				Source/CppSDK/SDK/OnlineSubsystem_functions.cpp,
+				Source/CppSDK/SDK/OnlineSubsystemUtils_functions.cpp,
+				Source/CppSDK/SDK/OnScreenWeapons_functions.cpp,
+				Source/CppSDK/SDK/Para_Character_BP_functions.cpp,
+				Source/CppSDK/SDK/PermAdvertStatusWidget_functions.cpp,
+				Source/CppSDK/SDK/PhysXVehicles_functions.cpp,
+				Source/CppSDK/SDK/PlayerControllerBlueprint_functions.cpp,
+				Source/CppSDK/SDK/PlayerHUDNew_functions.cpp,
+				Source/CppSDK/SDK/PlayerHUDStatusBarsWidget_functions.cpp,
+				Source/CppSDK/SDK/PlayerPawnTest_functions.cpp,
+				Source/CppSDK/SDK/PremiumOptionsMenu_functions.cpp,
+				Source/CppSDK/SDK/PremiumRechargeButton_functions.cpp,
+				Source/CppSDK/SDK/PremiumStatusWidget_functions.cpp,
+				Source/CppSDK/SDK/PreservingBin_functions.cpp,
+				Source/CppSDK/SDK/PrimalInventoryBP_MortarAndPestle_functions.cpp,
+				Source/CppSDK/SDK/PrimalInventoryBP_TributeTerminal1_functions.cpp,
+				Source/CppSDK/SDK/PrimalItem_DinoImplant_Base_functions.cpp,
+				Source/CppSDK/SDK/PrimalItem_DungeonAccessKey_functions.cpp,
+				Source/CppSDK/SDK/PrimalItem_Fist_functions.cpp,
+				Source/CppSDK/SDK/PrimalItem_ImplantGraft_Base_functions.cpp,
+				Source/CppSDK/SDK/PrimalItem_ImprintBoost_Base_functions.cpp,
+				Source/CppSDK/SDK/PrimalItem_Note_functions.cpp,
+				Source/CppSDK/SDK/PrimalItem_StartingNote_functions.cpp,
+				Source/CppSDK/SDK/PrimalItem_WeaponFishingRod_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemArmor_Base_Tek_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemArmor_GasMask_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemArmor_ScubaBoots_Flippers_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemArmor_ScubaHelmet_Goggles_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemArmor_ScubaShirt_SuitWithTank_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemArmor_TekHelmet_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemArmor_TEKScubaHelmet_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemArmorGeneric_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemConsumable_CureLow_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemConsumable_Egg_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemConsumable_Seed_DefensePlant_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemConsumable_StaminaSoup_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemConsumableEatable_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemConsumableEatable_WaterContainer_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemConsumablePoop_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemResource_DinoAmber_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemResource_EeryElement_functions.cpp,
+				Source/CppSDK/SDK/PrimalItemStructureGeneric_functions.cpp,
+				Source/CppSDK/SDK/ProceduralMeshComponent_functions.cpp,
+				Source/CppSDK/SDK/ProjDilo_functions.cpp,
+				Source/CppSDK/SDK/PromoCodeInfoDialog_functions.cpp,
+				Source/CppSDK/SDK/PromoItemEntry_functions.cpp,
+				Source/CppSDK/SDK/PromoTextEntryDialog_functions.cpp,
+				Source/CppSDK/SDK/Ptero_Character_BP_functions.cpp,
+				Source/CppSDK/SDK/PursuitInventoryListWidget_functions.cpp,
+				Source/CppSDK/SDK/PursuitStatusWidget_functions.cpp,
+				Source/CppSDK/SDK/Race_functions.cpp,
+				Source/CppSDK/SDK/RaceFlag_Base_functions.cpp,
+				Source/CppSDK/SDK/RacerEntry_functions.cpp,
+				Source/CppSDK/SDK/Raft_Anim_BP_functions.cpp,
+				Source/CppSDK/SDK/Raft_BP_functions.cpp,
+				Source/CppSDK/SDK/RaftOptionsMenu_functions.cpp,
+				Source/CppSDK/SDK/RandomWait_TK_functions.cpp,
+				Source/CppSDK/SDK/RotateToTarget_SRV_functions.cpp,
+				Source/CppSDK/SDK/SaveDialog_functions.cpp,
+				Source/CppSDK/SDK/ScopeVignette_functions.cpp,
+				Source/CppSDK/SDK/ScreenshotDialog_functions.cpp,
+				Source/CppSDK/SDK/Seek_Srv_functions.cpp,
+				Source/CppSDK/SDK/ServerSidePoint_Chest_functions.cpp,
+				Source/CppSDK/SDK/ServerStatsView_functions.cpp,
+				Source/CppSDK/SDK/SetBBBool_TK_functions.cpp,
+				Source/CppSDK/SDK/SetRunning_functions.cpp,
+				Source/CppSDK/SDK/ShooterHudBP_functions.cpp,
+				Source/CppSDK/SDK/ShouldFleeFromAttack_SRV_functions.cpp,
+				Source/CppSDK/SDK/ShouldForceFlee_DK_functions.cpp,
+				Source/CppSDK/SDK/SpawnMenu_functions.cpp,
+				Source/CppSDK/SDK/SpawnMenuButton_functions.cpp,
+				Source/CppSDK/SDK/SpawnMenuCharacterPresetsButton_functions.cpp,
+				Source/CppSDK/SDK/SpawnMenuCheatButton_functions.cpp,
+				Source/CppSDK/SDK/SpawnMenuEggButton_functions.cpp,
+				Source/CppSDK/SDK/SpawnMenuFolderButton_functions.cpp,
+				Source/CppSDK/SDK/SpawnMenuItemButton_functions.cpp,
+				Source/CppSDK/SDK/SpikeWall_functions.cpp,
+				Source/CppSDK/SDK/SpikeWall_Wood_functions.cpp,
+				Source/CppSDK/SDK/StandingTorch_functions.cpp,
+				Source/CppSDK/SDK/StopMovement_functions.cpp,
+				Source/CppSDK/SDK/StorageBox_Large_functions.cpp,
+				Source/CppSDK/SDK/StorageBox_Small_functions.cpp,
+				Source/CppSDK/SDK/StoreEntry_Folder_Root_BP_functions.cpp,
+				Source/CppSDK/SDK/StoreEntryWidget_BASE_functions.cpp,
+				Source/CppSDK/SDK/StoreItemTypeWidget_functions.cpp,
+				Source/CppSDK/SDK/StructureOptionsMenu_functions.cpp,
+				Source/CppSDK/SDK/StructureSeatingBaseBP_functions.cpp,
+				Source/CppSDK/SDK/SupplyCrate_Cave_QualityTier1_functions.cpp,
+				Source/CppSDK/SDK/SupplyCrate_Cave_QualityTier2_functions.cpp,
+				Source/CppSDK/SDK/SupplyCrate_Cave_QualityTier3_functions.cpp,
+				Source/CppSDK/SDK/SupplyCrate_Cave_QualityTier4_functions.cpp,
+				Source/CppSDK/SDK/SupplyCrateBaseBP_Instantaneous_functions.cpp,
+				Source/CppSDK/SDK/TamedDinoPanel_functions.cpp,
+				Source/CppSDK/SDK/TekKibbleProcessor_Base_functions.cpp,
+				Source/CppSDK/SDK/TestGameMode_functions.cpp,
+				Source/CppSDK/SDK/TreeFalling_Blueprint_functions.cpp,
+				Source/CppSDK/SDK/TribeOptionsMenu_functions.cpp,
+				Source/CppSDK/SDK/TributeTerminal_1_functions.cpp,
+				Source/CppSDK/SDK/TributeTerminal_Base_functions.cpp,
+				Source/CppSDK/SDK/TripwireOptionsMenu_functions.cpp,
+				Source/CppSDK/SDK/TurretOptionsMenu_functions.cpp,
+				Source/CppSDK/SDK/TurretOptionsPlantMenu_functions.cpp,
+				Source/CppSDK/SDK/Tutorial_Visuals_functions.cpp,
+				Source/CppSDK/SDK/UseAccountLinkToken_functions.cpp,
+				Source/CppSDK/SDK/UseTamedNoTargetBehavior_functions.cpp,
+				Source/CppSDK/SDK/WaitForWandering_DK_functions.cpp,
+				Source/CppSDK/SDK/WallBoundsMobile_functions.cpp,
+				Source/CppSDK/SDK/WarDrumsUI_functions.cpp,
+				Source/CppSDK/SDK/WDChatBP_functions.cpp,
+				Source/CppSDK/SDK/WDChatTextBP_functions.cpp,
+				Source/CppSDK/SDK/WDChatTextBP_Log_functions.cpp,
+				Source/CppSDK/SDK/WDRecording_functions.cpp,
+				Source/CppSDK/SDK/WDServerInfo_functions.cpp,
+				Source/CppSDK/SDK/WeapGPS_functions.cpp,
+				Source/CppSDK/SDK/WhistleButton_functions.cpp,
+				Source/CppSDK/SDK/WhistleMenu_functions.cpp,
+			);
+			target = 7ACE2C0C28154406001CC0F9 /* Sishen */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		ED94D0AA2E3F925800BA981A /* Dragon */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ED94EA352E3F98B000BA981A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Dragon; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7ACE2C0B28154406001CC0F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED3866A22E647569003D4366 /* ModelIO.framework in Frameworks */,
+				7ACE2C8C28155480001CC0F9 /* Foundation.framework in Frameworks */,
+				ED14EAE72D900B86008B4F85 /* ImageIO.framework in Frameworks */,
+				7ACE2C8D28155480001CC0F9 /* UIKit.framework in Frameworks */,
+				7ACE2C8528155461001CC0F9 /* Metal.framework in Frameworks */,
+				ED14EAE52D900B2D008B4F85 /* CoreGraphics.framework in Frameworks */,
+				7ACE2C8A28155479001CC0F9 /* libc.tbd in Frameworks */,
+				7ACE2C8B28155479001CC0F9 /* libc++.tbd in Frameworks */,
+				7ACE2C8428155461001CC0F9 /* MetalKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7ACE2C0428154406001CC0F9 = {
+			isa = PBXGroup;
+			children = (
+				ED94D0AA2E3F925800BA981A /* Dragon */,
+				7ACE2C8128155461001CC0F9 /* Frameworks */,
+				7ACE2C0E28154406001CC0F9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7ACE2C0E28154406001CC0F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7ACE2C0D28154406001CC0F9 /* Sishen.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7ACE2C8128155461001CC0F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED3866A12E647568003D4366 /* ModelIO.framework */,
+				EDF8C49E2DAD59D100E0F37A /* DeviceCheck.framework */,
+				ED14EAE62D900B86008B4F85 /* ImageIO.framework */,
+				ED14EAE42D900B2D008B4F85 /* CoreGraphics.framework */,
+				7ACE2C8328155461001CC0F9 /* Metal.framework */,
+				7ACE2C8228155461001CC0F9 /* MetalKit.framework */,
+				7ACE2C8928155479001CC0F9 /* Foundation.framework */,
+				7ACE2C8828155479001CC0F9 /* libc.tbd */,
+				7ACE2C8628155479001CC0F9 /* libc++.tbd */,
+				7ACE2C8728155479001CC0F9 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7ACE2C0928154406001CC0F9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7ACE2C0C28154406001CC0F9 /* Sishen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ACE2C1628154406001CC0F9 /* Build configuration list for PBXNativeTarget "Sishen" */;
+			buildPhases = (
+				7ACE2C0928154406001CC0F9 /* Headers */,
+				7ACE2C0A28154406001CC0F9 /* Sources */,
+				7ACE2C0B28154406001CC0F9 /* Frameworks */,
+				ED3DD98E2E34F4C000FB27D7 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				ED94D0AA2E3F925800BA981A /* Dragon */,
+			);
+			name = Sishen;
+			productName = Dolphins;
+			productReference = 7ACE2C0D28154406001CC0F9 /* Sishen.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7ACE2C0528154406001CC0F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					7ACE2C0C28154406001CC0F9 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+				};
+			};
+			buildConfigurationList = 7ACE2C0828154406001CC0F9 /* Build configuration list for PBXProject "Dragon" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7ACE2C0428154406001CC0F9;
+			productRefGroup = 7ACE2C0E28154406001CC0F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7ACE2C0C28154406001CC0F9 /* Sishen */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7ACE2C0A28154406001CC0F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7ACE2C1428154406001CC0F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++23";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7ACE2C1528154406001CC0F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++23";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		7ACE2C1728154406001CC0F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++23";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXECUTABLE_PREFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_NO_COMMON_BLOCKS = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Dragon/vendor/include";
+				INSTALL_PATH = /Library;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_DYLIB_INSTALL_NAME = "$(LD_DYLIB_INSTALL_NAME_$(LLVM_TARGET_TRIPLE_VENDOR):default=$(EXECUTABLE_PATH))";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Dragon",
+					"$(PROJECT_DIR)/Dragon/vendor/lib",
+					"$(PROJECT_DIR)/Dragon/.theos/_/Library/MobileSubstrate/DynamicLibraries",
+					"$(PROJECT_DIR)/Dragon/.theos/obj/arm64",
+					"$(PROJECT_DIR)/Dragon/.theos/obj",
+					"$(PROJECT_DIR)/Dragon/packages",
+				);
+				NEW_SETTING = "";
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Dragon",
+					"$(SRCROOT)/Dragon/ImGui",
+					"$(SRCROOT)/Dragon/Utilities",
+					"$(SRCROOT)/Dragon/vendor/include",
+				);
+			};
+			name = Debug;
+		};
+		7ACE2C1828154406001CC0F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++23";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXECUTABLE_PREFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = c17;
+				GCC_NO_COMMON_BLOCKS = NO;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Dragon/vendor/include";
+				INSTALL_PATH = /Library;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_DYLIB_INSTALL_NAME = "$(LD_DYLIB_INSTALL_NAME_$(LLVM_TARGET_TRIPLE_VENDOR):default=$(EXECUTABLE_PATH))";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Dragon",
+					"$(PROJECT_DIR)/Dragon/vendor/lib",
+					"$(PROJECT_DIR)/Dragon/.theos/_/Library/MobileSubstrate/DynamicLibraries",
+					"$(PROJECT_DIR)/Dragon/.theos/obj/arm64",
+					"$(PROJECT_DIR)/Dragon/.theos/obj",
+					"$(PROJECT_DIR)/Dragon/packages",
+				);
+				NEW_SETTING = "";
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Dragon",
+					"$(SRCROOT)/Dragon/ImGui",
+					"$(SRCROOT)/Dragon/Utilities",
+					"$(SRCROOT)/Dragon/vendor/include",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7ACE2C0828154406001CC0F9 /* Build configuration list for PBXProject "Dragon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ACE2C1428154406001CC0F9 /* Debug */,
+				7ACE2C1528154406001CC0F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7ACE2C1628154406001CC0F9 /* Build configuration list for PBXNativeTarget "Sishen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ACE2C1728154406001CC0F9 /* Debug */,
+				7ACE2C1828154406001CC0F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7ACE2C0528154406001CC0F9 /* Project object */;
+}
