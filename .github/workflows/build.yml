@@ -59,7 +59,7 @@ jobs:
         run: |
           mkdir -p Payload/Dragon.app
 
-          # 1. Nếu có link tải IPA gốc hoặc có file .ipa sẵn trong repo
+          # 1. Neu co link tai IPA goc hoac co file .ipa san trong repo
           BASE_IPA=""
           if [ -n "${{ github.event.inputs.ipa_url }}" ]; then
             echo "Downloading base IPA from: ${{ github.event.inputs.ipa_url }}"
@@ -90,7 +90,7 @@ jobs:
             rm -rf temp_ipa
           fi
 
-          # 2. Tạo IPA wrapper tiêu chuẩn
+          # 2. Tao IPA wrapper tieu chuan
           cat << 'EOF' > Payload/Dragon.app/Info.plist
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
