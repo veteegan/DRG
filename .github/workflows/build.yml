@@ -21,8 +21,6 @@ jobs:
 
       - name: Build Project
         run: |
-          mkdir -p build/output
-
           TARGET_NAME=$(xcodebuild -project Dragon.xcodeproj -list | awk '/Targets:/{flag=1; next} /Build Configurations:/{flag=0} flag' | tr -d ' ' | head -n 1)
           if [ -z "$TARGET_NAME" ]; then
             TARGET_NAME="Sishen"
@@ -37,7 +35,7 @@ jobs:
                      CODE_SIGNING_ALLOWED=NO \
                      CODE_SIGNING_REQUIRED=NO \
                      CODE_SIGN_IDENTITY="" \
-                     clean build
+                     build
 
       - name: Locate Built Files & Package Dylib
         run: |
