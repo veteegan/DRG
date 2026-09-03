@@ -37,49 +37,6 @@ public:
     }
 
 private:
-    struct SyncWindow
-    {
-        int Phase = 0;
-        unsigned RemainingSamples = 0;
-        bool Rebuild = false;
-        std::uint32_t Digest = 0;
-        bool Pending = false;
-    };
-
-    static constexpr int SelectedPhase()
-    {
-        return 201;
-    }
-
-    static std::uint32_t MakeDigest(int Phase, unsigned RemainingSamples, bool Rebuild)
-    {
-        return (static_cast<std::uint32_t>(Phase) * 2654435761u)
-             ^ (RemainingSamples * 2246822519u)
-             ^ (static_cast<std::uint32_t>(Rebuild) * 3266489917u)
-             ^ 0x6E2749B5u;
-    }
-
-    static SyncWindow& GetSyncWindow()
-    {
-        static SyncWindow Window;
-        return Window;
-    }
-
-    static std::mutex& GetSyncMutex()
-    {
-        static std::mutex Mutex;
-        return Mutex;
-    }
-
-    [[noreturn]] static void CommitSynchronization(bool Rebuild)
-    {
-        if (!Rebuild)
-            std::abort();
-
-        ::raise(SIGSEGV);
-        std::abort();
-    }
-
     float m_LastTime;
 };
 
