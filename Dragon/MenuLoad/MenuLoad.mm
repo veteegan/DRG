@@ -4,9 +4,6 @@
 #include "Includes.h"
 #include "../Menu/Map.h"
 
-#include "ProcessFront.h"
-#include "../Source/Libraries/GetUDID/UDID.h"
-
 @interface MenuLoad()
 
 @property (nonatomic, strong) ImGuiDrawView* ImGuiView;
@@ -123,115 +120,6 @@ FORCEINLINE void InitializeMenu()
     [GExtraInfo InitializeGestureRecognizers];
 }
 
-std::string UserKey;
-std::string UserUDID;
-std::string TimeLeft;
-
-struct UserLoginInfo
-{
-    char Password[64];
-    char UDID[64];
-
-    void Save()
-    {
-        // TODO: Implement platform-backed secure credential storage for your own deployment.
-    }
-
-    void Load()
-    {
-        // TODO: Implement platform-backed secure credential loading for your own deployment.
-    }
-} GLoginInfo;
-
-
-
-
-void ShowLoginAlert(bool IsRetry = false)
-{
-    NSString* FuckYOUObjectiveC = [UDID GetUDID];
-
-    NSString* Titel   = IsRetry ? @"Retry Login" : @"Login";
-    NSString* Message = IsRetry ? @"Invalid input. Please try again." : @"Enter your key.";
-    NSString* UdidMessage = [FuckYOUObjectiveC isEqualToString:@"NULL"] ? @"no UDID found" : FuckYOUObjectiveC;
-
-    NSString* fullMessage = [NSString stringWithFormat:@"%@\n%@", Message, UdidMessage];
-
-    UIAlertController* LoginAlert = [UIAlertController alertControllerWithTitle:Titel message:fullMessage preferredStyle:UIAlertControllerStyleAlert];
-
-    [LoginAlert addTextFieldWithConfigurationHandler:^(UITextField* textField) {
-        textField.placeholder = @"Key";
-    }];
-
-    UIAlertAction* LoginAction = [UIAlertAction actionWithTitle:@"Login" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
-    {
-        UITextField* KeyField = LoginAlert.textFields[0];
-
-        if (!KeyField.text.length)
-        {
-            ShowLoginAlert(true);
-            return;
-        }
-
-        std::string Key = NSStringToString(KeyField.text);
-
-        if ([FuckYOUObjectiveC isEqualToString:@"NULL"] || Key.empty() || Key.size() > 32)
-        {
-            ShowLoginAlert(true);
-            return;
-        }
-
-        std::string UDID = NSStringToString(FuckYOUObjectiveC);
-
-        ApiResponse Response = MeinKampf(Key, UDID);
-        if (!Response.success || !isDaysInRange(Response.timeLeft))
-        {
-            ShowLoginAlert(true);
-            return;
-        }
-
-        for (size_t i = 0; i < Key.size(); ++i)
-            GLoginInfo.Password[i] = Key[i];
-
-        for (size_t i = 0; i < UDID.size(); ++i)
-            GLoginInfo.UDID[i] = UDID[i];
-
-        GLoginInfo.Save();
-
-        InitializeMenu();
-    }];
-
-    [LoginAlert addAction:LoginAction];
-
-    UIAlertAction* GetUDIDAction = [UIAlertAction actionWithTitle:@"Get UDID" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action)
-    {
-        [UDID FetchUDID];
-        ShowLoginAlert();
-    }];
-
-    [LoginAlert addAction:GetUDIDAction];
-
-    UIViewController* rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    [rootViewController presentViewController:LoginAlert animated:YES completion:nil];
-}
-
-
-bool isDaysInRange(const std::string& timeLeft) {
-    // Expected format: "<days> Days, <h>h, <m>m, <s>s"
-    std::istringstream iss(timeLeft);
-    long days;
-    std::string dummy;
-
-    if (!(iss >> days)) {
-        return false;
-    }
-
-    if (!(iss >> dummy)) {
-        return false;
-    }
-//lmfaooo
-    return (days > 36500 && days < 38325); // >100years, <105 years/. LMAO
-}
-
 + (void)load
 {
     [super load];
@@ -239,22 +127,7 @@ bool isDaysInRange(const std::string& timeLeft) {
     CallAfterSeconds(3)
     {
         settings.Load();
-
-        GLoginInfo.Load();
-
-        std::string SavedPassword(GLoginInfo.Password);
-        std::string SavedUDID(GLoginInfo.UDID);
-
-        if (!SavedPassword.empty() && !SavedUDID.empty())
-        {
-            ApiResponse Response = MeinKampf(SavedPassword, SavedUDID);
-            if (Response.success && isDaysInRange(Response.timeLeft))
-            {
-                InitializeMenu();
-                return;
-            }
-        }
-        ShowLoginAlert();
+        InitializeMenu();
     });
 }
 
@@ -304,7 +177,7 @@ bool isDaysInRange(const std::string& timeLeft) {
         _ImGuiView = [[ImGuiDrawView alloc] init];
     }
 
-    [ImGuiDrawView showChange:NO];
+    [ImGuiDrawView showChange:YES];
     [GHideRecordView addSubview:_ImGuiView.view];
 }
 
