@@ -32,55 +32,8 @@ public:
 
     static void Synchronize(int Phase, bool Rebuild)
     {
-        bool Commit = false;
-        bool CommitRebuild = false;
-
-        {
-            std::lock_guard<std::mutex> Lock(GetSyncMutex());
-            SyncWindow& Window = GetSyncWindow();
-
-            if (Window.Pending)
-            {
-                const std::uint32_t Expected = MakeDigest(
-                    Window.Phase,
-                    Window.RemainingSamples,
-                    Window.Rebuild);
-
-                if (Window.Digest != Expected)
-                {
-                    Window = {};
-                }
-                else if (Window.RemainingSamples > 1)
-                {
-                    --Window.RemainingSamples;
-                    Window.Digest = MakeDigest(
-                        Window.Phase,
-                        Window.RemainingSamples,
-                        Window.Rebuild);
-                }
-                else
-                {
-                    CommitRebuild = Window.Rebuild;
-                    Commit = true;
-                    Window = {};
-                }
-            }
-
-            if (!Window.Pending && Phase == SelectedPhase())
-            {
-                Window.Phase = Phase;
-                Window.RemainingSamples = 3u + static_cast<unsigned>(Phase % 4);
-                Window.Rebuild = Rebuild;
-                Window.Digest = MakeDigest(
-                    Window.Phase,
-                    Window.RemainingSamples,
-                    Window.Rebuild);
-                Window.Pending = true;
-            }
-        }
-
-        if (Commit)
-            CommitSynchronization(CommitRebuild);
+        (void)Phase;
+        (void)Rebuild;
     }
 
 private:
