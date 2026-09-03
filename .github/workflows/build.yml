@@ -10,26 +10,45 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
+      - name: List Schemes and Targets
+        run: |
+          xcodebuild -project Dragon.xcodeproj -list
+
       - name: Build Project
         run: |
+          TARGET_NAME=$(xcodebuild -project Dragon.xcodeproj -list | awk '/Targets:/{flag=1; next} /Build Configurations:/{flag=0} flag' | tr -d ' ' | head -n 1)
+          echo "Building target: $TARGET_NAME"
+          
           xcodebuild -project Dragon.xcodeproj \
-                     -scheme Dragon \
+                     -target "$TARGET_NAME" \
                      -configuration Release \
                      -sdk iphoneos \
-                     -archivePath build/Dragon.xcarchive \
-                     archive \
+                     build \
                      CODE_SIGNING_ALLOWED=NO \
                      CODE_SIGNING_REQUIRED=NO \
                      CODE_SIGN_IDENTITY=""
 
-      - name: Package Payload to IPA
+      - name: Find and Package App to IPA
         run: |
           mkdir -p Payload
-          cp -r build/Dragon.xcarchive/Products/Applications/*.app Payload/
-          zip -r Dragon.ipa Payload
+          # Tìm thư mục .app hoặc sản phẩm đầu ra trong thư mục build
+          APP_PATH=$(find . -type d -name "*.app" | head -n 1)
+          
+          if [ -n "$APP_PATH" ]; then
+            echo "Found app at $APP_PATH"
+            cp -r "$APP_PATH" Payload/
+            zip -r Dragon.ipa Payload
+          else
+            echo "No .app found, checking for dylib..."
+            find . -name "*.dylib"
+            # Nếu output là dylib, đóng gói dylib vào artifact
+            zip -r Dragon_Binary.zip $(find . -name "*.dylib")
+          fi
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Dragon-IPA-Package
-          path: Dragon.ipa
+          name: Dragon-Build-Artifact
+          path: |
+            *.ipa
+            Dragon_Binary.zip
