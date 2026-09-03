@@ -566,7 +566,7 @@
 		7ACE2C1728154406001CC0F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++23";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -594,8 +594,8 @@
 					"$(PROJECT_DIR)/Dragon/packages",
 				);
 				NEW_SETTING = "";
-				OTHER_CFLAGS = "";
-				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_CFLAGS = "-Wno-everything";
+				OTHER_CPLUSPLUSFLAGS = "-std=c++20 -fno-rtti -Wno-everything";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -608,6 +608,8 @@
 				USER_HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Dragon",
 					"$(SRCROOT)/Dragon/ImGui",
+					"$(SRCROOT)/Dragon/ImGui/backends",
+					"$(SRCROOT)/Dragon/Resources",
 					"$(SRCROOT)/Dragon/Utilities",
 					"$(SRCROOT)/Dragon/vendor/include",
 				);
@@ -617,7 +619,7 @@
 		7ACE2C1828154406001CC0F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++23";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -644,8 +646,8 @@
 					"$(PROJECT_DIR)/Dragon/packages",
 				);
 				NEW_SETTING = "";
-				OTHER_CFLAGS = "";
-				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_CFLAGS = "-Wno-everything";
+				OTHER_CPLUSPLUSFLAGS = "-std=c++20 -fno-rtti -Wno-everything";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -658,6 +660,8 @@
 				USER_HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Dragon",
 					"$(SRCROOT)/Dragon/ImGui",
+					"$(SRCROOT)/Dragon/ImGui/backends",
+					"$(SRCROOT)/Dragon/Resources",
 					"$(SRCROOT)/Dragon/Utilities",
 					"$(SRCROOT)/Dragon/vendor/include",
 				);
