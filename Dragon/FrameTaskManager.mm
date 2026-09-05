@@ -35,10 +35,17 @@
 
 void VftSwapFunc(void* Instance, void* NewFunc, void*& OrigFunc, int32 Index)
 {
+    if (!Instance || !NewFunc)
+        return;
+
     void** Vft = *reinterpret_cast<void***>(Instance);
+    if (!Vft)
+        return;
+
     if (Vft[Index] != NewFunc)
     {
         OrigFunc = Vft[Index];
+        vm_protect(mach_task_self(), (vm_address_t)&Vft[Index], sizeof(void*), NO, VM_PROT_READ | VM_PROT_WRITE | VM_PROT_COPY);
         Vft[Index] = NewFunc;
     }
 }
@@ -4528,30 +4535,7 @@ static void new_sendEvent(id self, SEL _cmd, UIEvent *event)
 
 FORCEINLINE void CheckRestrictedLoadCommands()
 {
-    struct mach_header_64 *mh = (struct mach_header_64 *)_dyld_get_image_header(0);
-    if (!mh)
-        CrashSafe();
-
-    const struct load_command* lc = (const struct load_command*)((uintptr_t)mh + sizeof(struct mach_header_64));
-    for (uint32_t i = 0; i < mh->ncmds; i++)
-    {
-        if (lc->cmd == LC_LOAD_DYLIB || lc->cmd == LC_LOAD_WEAK_DYLIB)
-        {
-            struct dylib_command* dylib_cmd = (struct dylib_command*)lc;
-            char* dylib_name = (char*)dylib_cmd + dylib_cmd->dylib.name.offset;
-            if (!dylib_name)
-                continue;
-
-            if (UTF8Utils::Strstr(dylib_name, "/System/Library/") || UTF8Utils::Strstr(dylib_name, "/usr/lib/"))
-                continue;
-
-            if (UTF8Utils::Strstr(dylib_name, "Sishen.dylib"))
-                continue;
-
-            CrashSafe();
-        }
-        lc = (const struct load_command*)((uintptr_t)lc + lc->cmdsize);
-    }
+    // Disabled anti-tamper check to prevent crashes on injected IPAs
 }
 
 namespace fs = std::filesystem;
@@ -4592,26 +4576,27 @@ void UpdateEngineIni()
 
 ENTRY_POINT void __Entry(void)
 {
-    CheckRestrictedLoadCommands();
-
     SwizzleObjCMethod(objc_getClass("UIWindow"), @selector(sendEvent:), (IMP)(new_sendEvent), (IMP*)(&orig_sendEvent));
 
-    CallAfterSeconds(2)
+    CallAfterSeconds(3)
     {
-        CheckRestrictedLoadCommands();
-
         ScreenRect.Init();
 
-        FName::GNames = *reinterpret_cast<TNameEntryArray**>(SDK::InSDKUtils::GetImageBase() + Offsets::GNames);
+        uintptr_t imageBase = SDK::InSDKUtils::GetImageBase();
+        uintptr_t gnamesAddr = imageBase + Offsets::GNames;
+        if (!IMemoryUtils::Get()->IsBadReadPtr((const void*)gnamesAddr))
+        {
+            FName::GNames = *reinterpret_cast<TNameEntryArray**>(gnamesAddr);
+        }
 
         CGPMemoryScanner Scanner("ShooterGame");
 
 #define InitFunc(Func, Address) Func = decltype(Func)(Address)
-#define InitFuncWithOffset(Func, Offset) Func = decltype(Func)(SDK::InSDKUtils::GetImageBase() + Offset)
+#define InitFuncWithOffset(Func, Offset) Func = decltype(Func)(imageBase + Offset)
         // static void* Realloc(void* Original, SIZE_T Count, uint32 Alignment = DEFAULT_ALIGNMENT);
         void* FMemory_Realloc_Address   = (void*)Scanner.FindDirectSig("? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? 91 F3 03 02 AA F4 03 01 AA F5 03 00 AA ? ? ? ? ? ? ? 91 ? ? ? F9");
         void* SetClientTravel_Address   = (void*)Scanner.FindDirectSig("? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? 91 F3 03 03 AA F4 03 02 AA ? ? ? B9 ? ? ? 34");
-        void* FName_Constructor_Address = (void*)(SDK::InSDKUtils::GetImageBase() + 0x1014010EC);
+        void* FName_Constructor_Address = (void*)(imageBase + 0x1014010EC);
         void* UFont_GetCharSize_Address = (void*)Scanner.FindDirectSig("? ? ? D1 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? 91 F3 03 03 AA F4 03 02 AA F6 03 01 AA F5 03 00 AA ? ? ? B9 ? ? ? B9 ? ? ? 39");
         void* UFont_GetCharKerning_Address = (void*)Scanner.FindDirectSig("? ? ? D1 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? 91 F5 03 00 AA ? ? ? 39 ? ? ? 71");
         void* FText_Constructor_Address = (void*)Scanner.FindDirectSig("? ? ? D1 ? ? ? 6D ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? 91 F5 03 01 AA F3 03 00 AA ? ? ? 52");
@@ -4634,26 +4619,44 @@ ENTRY_POINT void __Entry(void)
 
 #undef InitFunc
 
-        FNames::FindAll();
-
-        for (auto Index{0}; Index < DinoClasses.size(); ++Index)
+        if (FName::Constructor && FName::GNames)
         {
-            int32 CompIndex = *FName(DinoClasses[Index].c_str());
-            FNameDinoMap.emplace(CompIndex, Index);
+            FNames::FindAll();
+
+            for (auto Index{0}; Index < DinoClasses.size(); ++Index)
+            {
+                int32 CompIndex = *FName(DinoClasses[Index].c_str());
+                FNameDinoMap.emplace(CompIndex, Index);
+            }
         }
 
-        GAverageFPS = (float*)(InSDKUtils::GetImageBase() + 0x104468130);
+        GAverageFPS = (float*)(imageBase + 0x104468130);
 
         std::thread(DrawDataThread).detach();
 
-        VftSwapFunc(UShooterGameViewportClient::GetDefaultObj(), (void*)new_PostRender, (void*&)orig_PostRender, 128);
-        VftSwapFunc(AShooterPlayerController::GetDefaultObj(), (void*)new_TickActor, (void*&)orig_TickActor, 155);
-        VftSwapFunc(UInterpGroup::GetDefaultObj(), (void*)new_UpdateGroup, (void*&)orig_UpdateGroup, 77);
-        VftSwapFunc(AShooterPlayerController::GetDefaultObj(), (void*)new_UpdateRotation, (void*&)orig_UpdateRotation, 429);
-        VftSwapFunc(AShooterCharacter::GetDefaultObj(), (void*)new_AShooterCharacter$ProcessEvent, (void*&)orig_AShooterCharacter$ProcessEvent, Offsets::ProcessEventIdx);
-        VftSwapFunc(APrimalDinoCharacter::GetDefaultObj(), (void*)new_APrimalDinoCharacter$PlayHitEffect, (void*&)orig_APrimalDinoCharacter$PlayHitEffect, 496);
-        VftSwapFunc(AShooterWeapon_Instant::GetDefaultObj(), (void*)new_GetAdjustedAim, (void*&)orig_GetAdjustedAim, 334);
-        VftSwapFunc(UShooterEngine::GetDefaultObj(), (void*)new_UShooterEngine$Tick, (void*&)orig_UShooterEngine$Tick, 94);
+        if (auto obj = UShooterGameViewportClient::GetDefaultObj())
+            VftSwapFunc(obj, (void*)new_PostRender, (void*&)orig_PostRender, 128);
+
+        if (auto obj = AShooterPlayerController::GetDefaultObj())
+        {
+            VftSwapFunc(obj, (void*)new_TickActor, (void*&)orig_TickActor, 155);
+            VftSwapFunc(obj, (void*)new_UpdateRotation, (void*&)orig_UpdateRotation, 429);
+        }
+
+        if (auto obj = UInterpGroup::GetDefaultObj())
+            VftSwapFunc(obj, (void*)new_UpdateGroup, (void*&)orig_UpdateGroup, 77);
+
+        if (auto obj = AShooterCharacter::GetDefaultObj())
+            VftSwapFunc(obj, (void*)new_AShooterCharacter$ProcessEvent, (void*&)orig_AShooterCharacter$ProcessEvent, Offsets::ProcessEventIdx);
+
+        if (auto obj = APrimalDinoCharacter::GetDefaultObj())
+            VftSwapFunc(obj, (void*)new_APrimalDinoCharacter$PlayHitEffect, (void*&)orig_APrimalDinoCharacter$PlayHitEffect, 496);
+
+        if (auto obj = AShooterWeapon_Instant::GetDefaultObj())
+            VftSwapFunc(obj, (void*)new_GetAdjustedAim, (void*&)orig_GetAdjustedAim, 334);
+
+        if (auto obj = UShooterEngine::GetDefaultObj())
+            VftSwapFunc(obj, (void*)new_UShooterEngine$Tick, (void*&)orig_UShooterEngine$Tick, 94);
 
         UpdateEngineIni();
 

@@ -131,20 +131,76 @@ FORCEINLINE void InitializeMenu()
     });
 }
 
++ (UIWindow*)GetSafeKeyWindow
+{
+    UIWindow* keyWindow = nil;
+    NSArray<UIWindow*>* windows = [UIApplication sharedApplication].windows;
+    for (UIWindow* w in windows)
+    {
+        if (w.isKeyWindow)
+        {
+            keyWindow = w;
+            break;
+        }
+    }
+
+    if (!keyWindow && windows.count > 0)
+    {
+        keyWindow = windows.firstObject;
+    }
+
+    if (!keyWindow)
+    {
+        for (UIScene* scene in [UIApplication sharedApplication].connectedScenes)
+        {
+            if ([scene isKindOfClass:[UIWindowScene class]])
+            {
+                UIWindowScene* windowScene = (UIWindowScene*)scene;
+                for (UIWindow* w in windowScene.windows)
+                {
+                    if (w.isKeyWindow)
+                    {
+                        keyWindow = w;
+                        break;
+                    }
+                }
+                if (!keyWindow && windowScene.windows.count > 0)
+                {
+                    keyWindow = windowScene.windows.firstObject;
+                }
+                if (keyWindow)
+                    break;
+            }
+        }
+    }
+
+    return keyWindow;
+}
+
 - (void)InitializeGestureRecognizers
 {
-    UIView* const MainApplicationView = [UIApplication sharedApplication].windows[0].rootViewController.view;
+    UIWindow* keyWindow = [MenuLoad GetSafeKeyWindow];
+    if (!keyWindow || !keyWindow.rootViewController || !keyWindow.rootViewController.view)
+    {
+        CallAfterSeconds(1)
+        {
+            [self InitializeGestureRecognizers];
+        });
+        return;
+    }
+
+    UIView* const MainApplicationView = keyWindow.rootViewController.view;
     const CGRect ScreenBounds = [[UIScreen mainScreen] bounds];
 
-    [self SetupHiddenRecordingComponents:ScreenBounds];
-    [self InitializeImGuiDrawSystem];
+    [self SetupHiddenRecordingComponents:ScreenBounds inWindow:keyWindow];
+    [self InitializeImGuiDrawSystemWithFallback:keyWindow];
     [self SetupTouchInteractionLayer:MainApplicationView];
     [self LoadAnimatedMenuButton:MainApplicationView];
     [self SetupInvisibleDraggableButton:MainApplicationView];
-    [self CreateSwitches:ScreenBounds];
+    [self CreateSwitches:ScreenBounds inWindow:keyWindow];
 }
 
-- (void)SetupHiddenRecordingComponents:(CGRect)InScreenBounds
+- (void)SetupHiddenRecordingComponents:(CGRect)InScreenBounds inWindow:(UIWindow*)InWindow
 {
     GHideRecordTextField = [[UITextField alloc] init];
     GHideRecordView = [[UIView alloc] initWithFrame:InScreenBounds];
@@ -155,22 +211,22 @@ FORCEINLINE void InitializeMenu()
 
     CALayer* const TextFieldLayer = GHideRecordTextField.layer;
 
-    if ([TextFieldLayer.sublayers.firstObject.delegate isKindOfClass:[UIView class]])
+    if (TextFieldLayer.sublayers.count > 0 && [TextFieldLayer.sublayers.firstObject.delegate isKindOfClass:[UIView class]])
     {
         GHideRecordView = (UIView*)TextFieldLayer.sublayers.firstObject.delegate;
     }
-    else
-    {
-        GHideRecordView = nil;
-    }
 
-    if (GHideRecordView)
+    if (!GHideRecordView)
     {
-        [[UIApplication sharedApplication].windows.firstObject addSubview:GHideRecordView];
+        GHideRecordView = InWindow;
+    }
+    else if (GHideRecordView != InWindow)
+    {
+        [InWindow addSubview:GHideRecordView];
     }
 }
 
-- (void)InitializeImGuiDrawSystem
+- (void)InitializeImGuiDrawSystemWithFallback:(UIWindow*)InWindow
 {
     if (!_ImGuiView)
     {
@@ -178,7 +234,8 @@ FORCEINLINE void InitializeMenu()
     }
 
     [ImGuiDrawView showChange:YES];
-    [GHideRecordView addSubview:_ImGuiView.view];
+    UIView* targetView = GHideRecordView ? GHideRecordView : InWindow;
+    [targetView addSubview:_ImGuiView.view];
 }
 
 - (void)SetupTouchInteractionLayer:(UIView*)InMainView
@@ -235,35 +292,40 @@ FORCEINLINE void InitializeMenu()
     GVisibleMenuButton.layer.cornerRadius = CornerRadius;
     GVisibleMenuButton.clipsToBounds = YES;
     [GVisibleMenuButton setImage:InAnimatedImage forState:UIControlStateNormal];
-    [GHideRecordView addSubview:GVisibleMenuButton];
+    UIView* targetView = GHideRecordView ? GHideRecordView : InMainView;
+    [targetView addSubview:GVisibleMenuButton];
 }
 
 
-- (void)CreateSwitches:(CGRect)ScreenRect
+- (void)CreateSwitches:(CGRect)ScreenRect inWindow:(UIWindow*)InWindow
 {
+    UIView* targetView = InWindow ? InWindow : [UIApplication sharedApplication].windows.firstObject;
+    if (!targetView)
+        return;
+
     // AutoFireSwitch
     AutoFireSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     AutoFireSwitch.frame = CGRectMake(ScreenRect.size.width - 53, CGRectGetMidY(ScreenRect) - 16, 51, 31);
     AutoFireSwitch.hidden = YES;
-    [[UIApplication sharedApplication].windows.firstObject addSubview:AutoFireSwitch];
+    [targetView addSubview:AutoFireSwitch];
 
     // HideDrawSwitch
     HideDrawSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     HideDrawSwitch.frame = CGRectMake(ScreenRect.size.width - 53, 35, 51, 31);
     HideDrawSwitch.hidden = YES;
-    [[UIApplication sharedApplication].windows.firstObject addSubview:HideDrawSwitch];
+    [targetView addSubview:HideDrawSwitch];
 
     // AimlockSwitch
     AimlockSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     AimlockSwitch.frame = CGRectMake(ScreenRect.size.width - 53, CGRectGetMidY(ScreenRect) + 16, 51, 31);
     AimlockSwitch.hidden = YES;
-    [[UIApplication sharedApplication].windows.firstObject addSubview:AimlockSwitch];
+    [targetView addSubview:AimlockSwitch];
 
     // FreezeSwitch
     FreezeSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     FreezeSwitch.frame = CGRectMake(53, CGRectGetMidY(ScreenRect), 51, 31);
     FreezeSwitch.hidden = YES;
-    [[UIApplication sharedApplication].windows.firstObject addSubview:FreezeSwitch];
+    [targetView addSubview:FreezeSwitch];
 }
 
 

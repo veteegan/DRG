@@ -76,7 +76,6 @@ inline UISwitch* FreezeSwitch = nullptr;
 
 FORCEINLINE void CrashSafe()
 {
-    *(volatile int*)0 = 1;
     return;
 }
 

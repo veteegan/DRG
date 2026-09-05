@@ -178,7 +178,10 @@ class UClass* StaticBPGeneratedClassImpl()
 template<class ClassType>
 ClassType* GetDefaultObjImpl()
 {
-	return static_cast<ClassType*>(ClassType::StaticClass()->DefaultObject);
+	UClass* Cls = ClassType::StaticClass();
+	if (!Cls)
+		return nullptr;
+	return static_cast<ClassType*>(Cls->DefaultObject);
 }
 
 
