@@ -383,6 +383,8 @@ CGPMemoryScanner::CGPMemoryScanner(const std::string& binaryName, const std::str
             header = reinterpret_cast<const mach_header_64*>(_dyld_get_image_header(i));
             break;
         }
+    }
+
     if (!header)
     {
         header = reinterpret_cast<const mach_header_64*>(_dyld_get_image_header(0));
