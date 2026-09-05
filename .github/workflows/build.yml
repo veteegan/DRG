@@ -27,6 +27,7 @@ jobs:
           fi
           echo "Building target: $TARGET_NAME"
 
+          set -o pipefail
           xcodebuild -project Dragon.xcodeproj \
                      -target "$TARGET_NAME" \
                      -configuration Release \
@@ -35,7 +36,17 @@ jobs:
                      CODE_SIGNING_ALLOWED=NO \
                      CODE_SIGNING_REQUIRED=NO \
                      CODE_SIGN_IDENTITY="" \
-                     build
+                     build 2>&1 | tee xcodebuild.log || {
+                       echo "================================================="
+                       echo "=== BUILD FAILED - EXTRACTING RELEVANT ERRORS ==="
+                       echo "================================================="
+                       grep -E -C 3 "(error:|fatal error:|The following build commands failed:|\*\* BUILD FAILED \*\*)" xcodebuild.log || true
+                       echo "================================================="
+                       echo "=== LAST 100 LINES OF FULL BUILD LOG ==="
+                       echo "================================================="
+                       tail -n 100 xcodebuild.log
+                       exit 1
+                     }
 
       - name: Locate Built Files & Package Dylib
         run: |

@@ -49,7 +49,26 @@
 		ED94EA352E3F98B000BA981A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				control,
+				Frontend/fozu_api/main.go,
 				ImGui/backends/imgui_impl_metal.mm,
+				Makefile,
+				vendor/include/MariaDB/zlib/adler32.c,
+				vendor/include/MariaDB/zlib/compress.c,
+				vendor/include/MariaDB/zlib/crc32.c,
+				vendor/include/MariaDB/zlib/deflate.c,
+				vendor/include/MariaDB/zlib/gzclose.c,
+				vendor/include/MariaDB/zlib/gzlib.c,
+				vendor/include/MariaDB/zlib/gzread.c,
+				vendor/include/MariaDB/zlib/gzwrite.c,
+				vendor/include/MariaDB/zlib/infback.c,
+				vendor/include/MariaDB/zlib/inffast.c,
+				vendor/include/MariaDB/zlib/inflate.c,
+				vendor/include/MariaDB/zlib/inftrees.c,
+				vendor/include/MariaDB/zlib/minigzip.c,
+				vendor/include/MariaDB/zlib/trees.c,
+				vendor/include/MariaDB/zlib/uncompr.c,
+				vendor/include/MariaDB/zlib/zutil.c,
 				Source/CppSDK/SDK/AdBuffStatusWidget_functions.cpp,
 				Source/CppSDK/SDK/AIModule_functions.cpp,
 				Source/CppSDK/SDK/AllowWandering_functions.cpp,
@@ -596,7 +615,7 @@
 				NEW_SETTING = "";
 				OTHER_CFLAGS = "-Wno-everything";
 				OTHER_CPLUSPLUSFLAGS = "-std=c++20 -fno-rtti -Wno-everything";
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = "-all_load -lfmt -lcurl -lssl -lcrypto -lz -framework Security -framework CFNetwork -framework SystemConfiguration -framework QuartzCore";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -648,7 +667,7 @@
 				NEW_SETTING = "";
 				OTHER_CFLAGS = "-Wno-everything";
 				OTHER_CPLUSPLUSFLAGS = "-std=c++20 -fno-rtti -Wno-everything";
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = "-all_load -lfmt -lcurl -lssl -lcrypto -lz -framework Security -framework CFNetwork -framework SystemConfiguration -framework QuartzCore";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
